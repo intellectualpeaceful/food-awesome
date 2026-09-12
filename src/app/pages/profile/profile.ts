@@ -1,11 +1,12 @@
 import { Component, inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AppState } from '../../core/app-state';
+import { StatusBar } from '../../shared/status-bar/status-bar';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [],
+  imports: [RouterLink, StatusBar],
   templateUrl: './profile.html',
   styleUrl: './profile.scss',
 })

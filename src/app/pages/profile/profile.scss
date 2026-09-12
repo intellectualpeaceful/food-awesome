@@ -6,28 +6,50 @@
 
 .hero {
   position: relative;
-  padding: 30px 24px 40px;
+  height: 300px;
   border-radius: 0 0 32px 32px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   overflow: hidden;
-
-  h1 {
-    color: var(--white);
-    font-size: 30px;
-    font-weight: 800;
-    line-height: 1.2;
-    position: relative;
-    z-index: 1;
-  }
 }
 
-// one big peach circle bleeding off the frame, with a smaller teal
-// circle peeking out from behind the avatar photo
+.status {
+  position: relative;
+  z-index: 2;
+  display: block;
+}
+
+.back {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin: 18px 0 0 20px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+  color: var(--white);
+}
+
+h1 {
+  position: relative;
+  z-index: 2;
+  margin: 14px 0 0 20px;
+  max-width: 150px;
+  color: var(--white);
+  font-size: 27px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+// two intersecting circles, peach biased left+down, teal biased
+// top-right, with the avatar photo layered on top straddling the seam
 .hero-blob-peach {
   position: absolute;
-  inset: -30% -35% -15%;
+  width: 330px;
+  height: 330px;
+  left: -70px;
+  bottom: -80px;
   border-radius: 50%;
   background: var(--peach);
   z-index: 0;
@@ -35,23 +57,26 @@
 
 .hero-blob-teal {
   position: absolute;
-  top: 18px;
-  right: 12px;
-  width: 118px;
-  height: 118px;
+  width: 220px;
+  height: 220px;
+  top: -50px;
+  right: -50px;
   border-radius: 50%;
   background: var(--teal);
   z-index: 0;
 }
 
 .avatar {
-  width: 96px;
-  height: 96px;
+  position: absolute;
+  z-index: 2;
+  right: 24px;
+  bottom: 24px;
+  width: 128px;
+  height: 128px;
   border-radius: 50%;
   object-fit: cover;
-  border: 4px solid rgba(255, 255, 255, 0.55);
-  position: relative;
-  z-index: 1;
+  border: 4px solid var(--white);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
 }
 
 .body {
