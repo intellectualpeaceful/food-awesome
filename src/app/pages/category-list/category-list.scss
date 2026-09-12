@@ -6,10 +6,30 @@
 
 .hero {
   position: relative;
-  background: var(--peach);
   padding: 20px 24px 30px;
   border-radius: 0 0 32px 32px;
   overflow: hidden;
+}
+
+// one big peach circle bleeding off the frame, with a smaller teal
+// circle peeking out from behind the corner thumbnail image
+.hero-blob-peach {
+  position: absolute;
+  inset: -20% -35% -15%;
+  border-radius: 50%;
+  background: var(--peach);
+  z-index: 0;
+}
+
+.hero-blob-teal {
+  position: absolute;
+  top: 4px;
+  right: -6px;
+  width: 116px;
+  height: 116px;
+  border-radius: 50%;
+  background: var(--teal);
+  z-index: 0;
 }
 
 .back {

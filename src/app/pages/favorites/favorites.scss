@@ -6,15 +6,17 @@
 
 .hero {
   position: relative;
-  background: var(--peach);
   padding: 26px 24px 30px;
   border-radius: 0 0 32px 32px;
+  overflow: hidden;
 
   h1 {
     color: var(--white);
     font-size: 28px;
     font-weight: 800;
     max-width: 65%;
+    position: relative;
+    z-index: 1;
   }
 
   p {
@@ -22,7 +24,30 @@
     font-size: 14px;
     margin-top: 8px;
     max-width: 60%;
+    position: relative;
+    z-index: 1;
   }
+}
+
+// one big peach circle bleeding off the frame, with a smaller teal
+// circle peeking out from behind the corner thumbnail image
+.hero-blob-peach {
+  position: absolute;
+  inset: -25% -35% -15%;
+  border-radius: 50%;
+  background: var(--peach);
+  z-index: 0;
+}
+
+.hero-blob-teal {
+  position: absolute;
+  top: 6px;
+  right: -4px;
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  background: var(--teal);
+  z-index: 0;
 }
 
 .hero-thumb {
@@ -34,6 +59,7 @@
   border-radius: 50%;
   overflow: hidden;
   border: 3px solid rgba(255, 255, 255, 0.5);
+  z-index: 1;
 
   img {
     width: 100%;

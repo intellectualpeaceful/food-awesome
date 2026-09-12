@@ -6,7 +6,6 @@
 
 .hero {
   position: relative;
-  background: var(--peach);
   padding: 30px 24px 40px;
   border-radius: 0 0 32px 32px;
   display: flex;
@@ -22,6 +21,27 @@
     position: relative;
     z-index: 1;
   }
+}
+
+// one big peach circle bleeding off the frame, with a smaller teal
+// circle peeking out from behind the avatar photo
+.hero-blob-peach {
+  position: absolute;
+  inset: -30% -35% -15%;
+  border-radius: 50%;
+  background: var(--peach);
+  z-index: 0;
+}
+
+.hero-blob-teal {
+  position: absolute;
+  top: 18px;
+  right: 12px;
+  width: 118px;
+  height: 118px;
+  border-radius: 50%;
+  background: var(--teal);
+  z-index: 0;
 }
 
 .avatar {
