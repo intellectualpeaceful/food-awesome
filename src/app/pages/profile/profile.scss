@@ -6,8 +6,7 @@
 
 .hero {
   position: relative;
-  height: 300px;
-  border-radius: 0 0 32px 32px;
+  height: 225px;
   overflow: hidden;
 }
 
@@ -25,7 +24,7 @@
   justify-content: center;
   width: 36px;
   height: 36px;
-  margin: 18px 0 0 20px;
+  margin: 14px 0 0 20px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.35);
   color: var(--white);
@@ -34,10 +33,10 @@
 h1 {
   position: relative;
   z-index: 2;
-  margin: 14px 0 0 20px;
-  max-width: 150px;
+  margin: 10px 0 0 20px;
+  max-width: 140px;
   color: var(--white);
-  font-size: 27px;
+  font-size: 24px;
   font-weight: 800;
   line-height: 1.2;
 }
@@ -46,10 +45,10 @@ h1 {
 // top-right, with the avatar photo layered on top straddling the seam
 .hero-blob-peach {
   position: absolute;
-  width: 330px;
-  height: 330px;
-  left: -70px;
-  bottom: -80px;
+  width: 305px;
+  height: 305px;
+  left: -55px;
+  bottom: -60px;
   border-radius: 50%;
   background: var(--peach);
   z-index: 0;
@@ -57,10 +56,10 @@ h1 {
 
 .hero-blob-teal {
   position: absolute;
-  width: 220px;
-  height: 220px;
-  top: -50px;
-  right: -50px;
+  width: 165px;
+  height: 165px;
+  top: -35px;
+  right: -35px;
   border-radius: 50%;
   background: var(--teal);
   z-index: 0;
@@ -69,10 +68,10 @@ h1 {
 .avatar {
   position: absolute;
   z-index: 2;
-  right: 24px;
-  bottom: 24px;
-  width: 128px;
-  height: 128px;
+  right: 20px;
+  bottom: 18px;
+  width: 108px;
+  height: 108px;
   border-radius: 50%;
   object-fit: cover;
   border: 4px solid var(--white);

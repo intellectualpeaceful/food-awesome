@@ -7,7 +7,6 @@
 .hero {
   position: relative;
   padding: 26px 24px 30px;
-  border-radius: 0 0 32px 32px;
   overflow: hidden;
 
   h1 {
@@ -29,11 +28,16 @@
   }
 }
 
-// one big peach circle bleeding off the frame, with a smaller teal
-// circle peeking out from behind the corner thumbnail image
+// one big peach circle bleeding off the frame — a true circle (not a
+// percentage ellipse, which flattens out at odd aspect ratios) — with
+// a smaller teal circle peeking out from behind the thumbnail image
 .hero-blob-peach {
   position: absolute;
-  inset: -25% -35% -15%;
+  width: 400px;
+  height: 400px;
+  left: 50%;
+  top: -205px;
+  margin-left: -200px;
   border-radius: 50%;
   background: var(--peach);
   z-index: 0;

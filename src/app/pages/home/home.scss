@@ -5,18 +5,23 @@
 }
 
 .hero {
-  border-radius: 0 0 36px 36px;
   padding-bottom: 26px;
   position: relative;
   overflow: hidden;
 }
 
 // the peach header isn't a flat rectangle in the design: it's one big
-// peach circle bleeding off the frame, with a smaller teal circle
-// peeking out from behind the avatar in the top-right corner
+// peach circle bleeding off the frame, sized as a true circle (not a
+// percentage-based ellipse, which flattens out at odd aspect ratios)
+// so its curve stays a clean dome at any viewport width, with a
+// smaller teal circle peeking out from behind the avatar
 .hero-blob-peach {
   position: absolute;
-  inset: -25% -35% -10%;
+  width: 480px;
+  height: 480px;
+  left: 50%;
+  top: -251px;
+  margin-left: -240px;
   border-radius: 50%;
   background: var(--peach);
   z-index: 0;
