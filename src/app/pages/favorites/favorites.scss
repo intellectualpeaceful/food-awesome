@@ -9,13 +9,27 @@
   height: 195px;
   overflow: hidden;
 
+  .back {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    margin: 18px 0 0 20px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.35);
+    color: var(--white);
+  }
+
   h1 {
     position: relative;
     z-index: 2;
-    margin: 24px 0 0 24px;
+    margin: 10px 0 0 24px;
     max-width: 58%;
     color: var(--white);
-    font-size: 28px;
+    font-size: 27px;
     font-weight: 800;
   }
 

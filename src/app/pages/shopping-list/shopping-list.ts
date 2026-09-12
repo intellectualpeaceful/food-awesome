@@ -1,10 +1,11 @@
 import { Component, computed, inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { AppState } from '../../core/app-state';
 
 @Component({
   selector: 'app-shopping-list',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './shopping-list.html',
   styleUrl: './shopping-list.scss',
 })
