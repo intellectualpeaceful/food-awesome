@@ -41,7 +41,7 @@
   } @else {
     <section class="section categories">
       <div class="carousel scroll-hide" #carousel (scroll)="onCarouselScroll()">
-        @for (cat of categories; track cat.id; let i = $index) {
+        @for (cat of loopedCategories; track $index; let i = $index) {
           <a
             class="cat-card"
             #card
@@ -55,7 +55,7 @@
       </div>
       <div class="dots">
         @for (cat of categories; track cat.id; let i = $index) {
-          <span class="dot" [class.active]="i === activeIndex()"></span>
+          <span class="dot" [class.active]="i === dotIndex"></span>
         }
       </div>
     </section>

@@ -31,20 +31,35 @@ export class Home implements AfterViewInit {
 
   query = '';
 
-  activeIndex = signal(0);
+  // the carousel renders 3 back-to-back copies of the categories so the
+  // track always has room to scroll past either edge; once the user settles
+  // on a card inside the first or third copy we silently re-center the
+  // equivalent card in the middle copy, which reads as an infinite loop
+  private readonly setSize = this.categories.length;
+  loopedCategories = [...this.categories, ...this.categories, ...this.categories];
+
+  // raw index into loopedCategories (0..3*setSize - 1)
+  activeIndex = signal(this.setSize);
 
   @ViewChild('carousel') private carouselRef?: ElementRef<HTMLDivElement>;
   @ViewChildren('card') private cardRefs?: QueryList<ElementRef<HTMLElement>>;
 
   private scrollRaf = 0;
+  private settleTimeout?: ReturnType<typeof setTimeout>;
 
   get filteredRecipes() {
     return this.query ? this.data.searchRecipes(this.query) : [];
   }
 
+  get dotIndex() {
+    return this.activeIndex() % this.setSize;
+  }
+
   ngAfterViewInit() {
-    // let layout settle before measuring card positions
-    requestAnimationFrame(() => this.updateActiveCard());
+    // start centered on the first card of the middle copy, no animation
+    requestAnimationFrame(() => {
+      this.jumpTo(this.setSize, 'instant');
+    });
     this.cardRefs?.changes.subscribe(() => {
       requestAnimationFrame(() => this.updateActiveCard());
     });
@@ -53,6 +68,9 @@ export class Home implements AfterViewInit {
   onCarouselScroll() {
     if (this.scrollRaf) cancelAnimationFrame(this.scrollRaf);
     this.scrollRaf = requestAnimationFrame(() => this.updateActiveCard());
+
+    clearTimeout(this.settleTimeout);
+    this.settleTimeout = setTimeout(() => this.normalizeLoop(), 120);
   }
 
   private updateActiveCard() {
@@ -77,5 +95,22 @@ export class Home implements AfterViewInit {
     if (this.activeIndex() !== closestIndex) {
       this.activeIndex.set(closestIndex);
     }
+  }
+
+  /** once scrolling has settled, snap invisibly back into the middle copy if we drifted into a clone */
+  private normalizeLoop() {
+    const raw = this.activeIndex();
+    if (raw < this.setSize) {
+      this.jumpTo(raw + this.setSize, 'instant');
+    } else if (raw >= this.setSize * 2) {
+      this.jumpTo(raw - this.setSize, 'instant');
+    }
+  }
+
+  private jumpTo(rawIndex: number, behavior: ScrollBehavior) {
+    const el = this.cardRefs?.toArray()[rawIndex]?.nativeElement;
+    if (!el) return;
+    el.scrollIntoView({ inline: 'center', block: 'nearest', behavior });
+    this.activeIndex.set(rawIndex);
   }
 }

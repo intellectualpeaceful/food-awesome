@@ -1,11 +1,14 @@
 @if (recipe) {
   <div class="recipe-page">
-    <div class="hero">
-      <img [src]="recipe.image" [alt]="recipe.name" />
+    <div class="topbar">
       <button type="button" (click)="goBack()" class="back" aria-label="Back">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
       <app-favorite-button class="fav" [recipeId]="recipe.id" />
+    </div>
+
+    <div class="hero">
+      <img [src]="recipe.image" [alt]="recipe.name" />
       <h1>{{ recipe.name }}</h1>
     </div>
 
