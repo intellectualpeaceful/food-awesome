@@ -40,12 +40,22 @@
     </section>
   } @else {
     <section class="section categories">
-      <div class="carousel scroll-hide">
-        @for (cat of categories; track cat.id) {
-          <a class="cat-card" [routerLink]="['/category', cat.id]">
+      <div class="carousel scroll-hide" #carousel (scroll)="onCarouselScroll()">
+        @for (cat of categories; track cat.id; let i = $index) {
+          <a
+            class="cat-card"
+            #card
+            [class.active]="i === activeIndex()"
+            [routerLink]="['/category', cat.id]"
+          >
             <img [src]="cat.image" [alt]="cat.name" />
             <span>{{ cat.name }}</span>
           </a>
+        }
+      </div>
+      <div class="dots">
+        @for (cat of categories; track cat.id; let i = $index) {
+          <span class="dot" [class.active]="i === activeIndex()"></span>
         }
       </div>
     </section>
