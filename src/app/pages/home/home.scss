@@ -91,8 +91,11 @@ h1 {
   }
 
   // while silently re-centering into the middle copy, freeze the lift
-  // transition so the swap between clones is a true, invisible jump
-  &.jumping .cat-card {
+  // (and the image's shadow) so the swap between clones is a true,
+  // invisible jump — has to cover the card AND its descendants, since
+  // the shadow transition lives on the nested img, not the card itself
+  &.jumping .cat-card,
+  &.jumping .cat-card * {
     transition: none !important;
   }
 }
