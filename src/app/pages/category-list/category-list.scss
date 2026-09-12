@@ -5,16 +5,9 @@
 }
 
 .hero {
-  position: sticky;
-  top: 0;
-  z-index: 15;
+  position: relative;
   padding: 20px 24px 30px;
   overflow: hidden;
-  background: var(--white); // opaque base so scrolling content can't
-  // peek through the corners the circles don't cover
-  transform: scale(var(--hero-scale, 1));
-  transform-origin: top center;
-  transition: transform 0.15s ease-out;
 }
 
 // one big peach circle bleeding off the frame — a true circle (not a

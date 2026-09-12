@@ -4,12 +4,11 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs';
 import { RecipeData } from '../../core/recipe-data';
 import { FavoriteButton } from '../../shared/favorite-button/favorite-button';
-import { HeroShrink } from '../../shared/hero-shrink/hero-shrink';
 
 @Component({
   selector: 'app-category-list',
   standalone: true,
-  imports: [RouterLink, FavoriteButton, HeroShrink],
+  imports: [RouterLink, FavoriteButton],
   templateUrl: './category-list.html',
   styleUrl: './category-list.scss',
 })

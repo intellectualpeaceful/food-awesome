@@ -14,12 +14,11 @@ import { AppState } from '../../core/app-state';
 import { RecipeData } from '../../core/recipe-data';
 import { StatusBar } from '../../shared/status-bar/status-bar';
 import { FavoriteButton } from '../../shared/favorite-button/favorite-button';
-import { HeroShrink } from '../../shared/hero-shrink/hero-shrink';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink, FormsModule, StatusBar, FavoriteButton, HeroShrink],
+  imports: [RouterLink, FormsModule, StatusBar, FavoriteButton],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })

@@ -1,12 +1,11 @@
 import { Component, computed, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { AppState } from '../../core/app-state';
-import { HeroShrink } from '../../shared/hero-shrink/hero-shrink';
 
 @Component({
   selector: 'app-shopping-list',
   standalone: true,
-  imports: [RouterLink, HeroShrink],
+  imports: [RouterLink],
   templateUrl: './shopping-list.html',
   styleUrl: './shopping-list.scss',
 })
