@@ -1,0 +1,31 @@
+@if (category) {
+  <div class="cat-page">
+    <header class="hero">
+      <a routerLink="/home" class="back" aria-label="Back">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <h1>{{ category.name }}</h1>
+      <p>{{ category.tagline }}</p>
+      <div class="hero-thumb">
+        <img [src]="category.image" [alt]="category.name" />
+      </div>
+    </header>
+
+    <div class="list">
+      @for (recipe of recipes; track recipe.id) {
+        <a class="recipe-card" [routerLink]="['/recipe', recipe.id]">
+          <div class="thumb">
+            <img [src]="recipe.image" [alt]="recipe.name" />
+            <app-favorite-button [recipeId]="recipe.id" />
+          </div>
+          <div class="info">
+            <h3>{{ recipe.name }}</h3>
+            <p>{{ recipe.shortDesc }}</p>
+          </div>
+        </a>
+      } @empty {
+        <p class="empty-text">No recipes in this category yet.</p>
+      }
+    </div>
+  </div>
+}

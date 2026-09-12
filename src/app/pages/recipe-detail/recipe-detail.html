@@ -1,0 +1,52 @@
+@if (recipe) {
+  <div class="recipe-page">
+    <div class="hero">
+      <img [src]="recipe.image" [alt]="recipe.name" />
+      <button type="button" (click)="goBack()" class="back" aria-label="Back">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <app-favorite-button class="fav" [recipeId]="recipe.id" />
+      <h1>{{ recipe.name }}</h1>
+    </div>
+
+    <div class="body">
+      <div class="stats">
+        <div class="stat-row"><span class="label">Difficulty</span><span class="value">{{ recipe.difficulty }}</span></div>
+        <div class="stat-row"><span class="label">Time</span><span class="value">{{ recipe.time }}</span></div>
+        <div class="stat-row"><span class="label">Doses</span><span class="value">{{ recipe.doses }}</span></div>
+        <div class="stat-row"><span class="label">Cost</span><span class="value">{{ recipe.cost }}</span></div>
+      </div>
+
+      <div class="ingredients-head">
+        <h2>Ingredient</h2>
+        <button class="add-all" (click)="addAll()">+ My List</button>
+      </div>
+
+      <div class="ingredients">
+        @for (ing of recipe.ingredients; track ing.name) {
+          <div class="ingredient-row">
+            <span class="ing-name">{{ ing.name }}</span>
+            <span class="ing-qty">{{ ing.qty }}</span>
+            <button
+              class="cart-btn"
+              [class.added]="state.isInShoppingList(ing.name)"
+              (click)="toggleIngredient(ing.name, ing.qty)"
+              aria-label="Add to shopping list"
+            >
+              @if (state.isInShoppingList(ing.name)) {
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              } @else {
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M3 6h2l1.4 10.6a1.8 1.8 0 001.8 1.6h8.6a1.8 1.8 0 001.78-1.5L20 8H6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="21" r="1.2" fill="currentColor"/><circle cx="16.5" cy="21" r="1.2" fill="currentColor"/></svg>
+              }
+            </button>
+          </div>
+        }
+      </div>
+
+      <div class="instructions">
+        <h2>Instructions</h2>
+        <p>{{ recipe.instructions }}</p>
+      </div>
+    </div>
+  </div>
+}

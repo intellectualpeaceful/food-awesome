@@ -1,0 +1,91 @@
+.welcome {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.hero {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.hero-blob-teal {
+  width: 220px;
+  height: 220px;
+  top: -60px;
+  left: -80px;
+}
+
+.hero-blob-peach {
+  width: 260px;
+  height: 260px;
+  top: 60px;
+  right: -110px;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 36px 32px 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.eyebrow {
+  letter-spacing: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: 34px;
+  font-weight: 800;
+  margin-top: 6px;
+  color: var(--text);
+}
+
+.tagline {
+  margin-top: 14px;
+  font-size: 16px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.actions {
+  width: 100%;
+  max-width: 260px;
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-bottom: 40px;
+}
+
+.foot-blob-teal {
+  width: 180px;
+  height: 180px;
+  bottom: -60px;
+  right: -70px;
+}
+
+.foot-blob-peach {
+  width: 240px;
+  height: 240px;
+  bottom: -120px;
+  left: -90px;
+}

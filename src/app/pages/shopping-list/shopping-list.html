@@ -1,0 +1,39 @@
+<div class="list-page">
+  <header class="hero">
+    <h1>My List</h1>
+    <p>What i have to buy?</p>
+    <div class="hero-thumb">
+      <img src="https://images.unsplash.com/photo-1610348725531-843dff563e2c?w=300&q=80" alt="Groceries" />
+    </div>
+  </header>
+
+  @if (state.shoppingList().length === 0) {
+    <div class="empty">
+      <svg width="64" height="64" viewBox="0 0 24 24" fill="none"><path d="M3 6h2l1.4 10.6a1.8 1.8 0 001.8 1.6h8.6a1.8 1.8 0 001.78-1.5L20 8H6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="21" r="1.4" fill="currentColor"/><circle cx="16.5" cy="21" r="1.4" fill="currentColor"/></svg>
+      <p>Add ingredients from a recipe to build your shopping list</p>
+    </div>
+  } @else {
+    <div class="actions">
+      <button class="link-btn" (click)="selectAll()">Select All</button>
+      <button class="link-btn" (click)="deselectAll()">Deselect All</button>
+    </div>
+
+    <div class="items">
+      @for (item of state.shoppingList(); track item.id) {
+        <div class="item-row" [class.checked]="item.checked">
+          <label class="check">
+            <input type="checkbox" [checked]="item.checked" (change)="state.toggleShoppingItem(item.id)" />
+            <span class="box">
+              @if (item.checked) {
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              }
+            </span>
+            <span class="name">{{ item.name }}</span>
+            <span class="qty">{{ item.qty }}</span>
+          </label>
+          <button class="delete" (click)="state.deleteShoppingItem(item.id)">Delete</button>
+        </div>
+      }
+    </div>
+  }
+</div>

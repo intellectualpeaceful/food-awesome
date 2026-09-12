@@ -1,0 +1,28 @@
+<div class="fav-page">
+  <header class="hero">
+    <h1>Favorites</h1>
+    <p>Let's make some Asiatic vibes today!</p>
+    <div class="hero-thumb">
+      <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=300&q=80" alt="Favorites" />
+    </div>
+  </header>
+
+  @if (favoriteRecipes().length === 0) {
+    <div class="empty">
+      <svg width="64" height="64" viewBox="0 0 24 24" fill="none"><path d="M12 20.5l-1.45-1.32C5.4 14.86 2 11.77 2 8.02 2 4.93 4.42 2.5 7.5 2.5c1.74 0 3.41.81 4.5 2.09A6.07 6.07 0 0116.5 2.5C19.58 2.5 22 4.93 22 8.02c0 3.75-3.4 6.84-8.55 11.17L12 20.5z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+      <p>Your favorite recipes will be saved here</p>
+    </div>
+  } @else {
+    <div class="grid">
+      @for (recipe of favoriteRecipes(); track recipe.id) {
+        <a class="grid-card" [routerLink]="['/recipe', recipe.id]">
+          <div class="grid-img">
+            <img [src]="recipe.image" [alt]="recipe.name" />
+            <app-favorite-button [recipeId]="recipe.id" />
+          </div>
+          <h3>{{ recipe.name }}</h3>
+        </a>
+      }
+    </div>
+  }
+</div>
