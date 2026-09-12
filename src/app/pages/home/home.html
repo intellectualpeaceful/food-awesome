@@ -40,7 +40,7 @@
     </section>
   } @else {
     <section class="section categories">
-      <div class="carousel scroll-hide" #carousel (scroll)="onCarouselScroll()">
+      <div class="carousel scroll-hide" [class.jumping]="jumping()" #carousel (scroll)="onCarouselScroll()">
         @for (cat of loopedCategories; track $index; let i = $index) {
           <a
             class="cat-card"

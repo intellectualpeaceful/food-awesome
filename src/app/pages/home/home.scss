@@ -81,7 +81,6 @@ h1 {
   overflow-x: auto;
   padding: 22px 0 10px;
   scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
 
   // spacer pseudo-cards let the first/last real card reach center
   &::before,
@@ -89,6 +88,12 @@ h1 {
     content: '';
     flex: 0 0 auto;
     width: calc(50% - 50px);
+  }
+
+  // while silently re-centering into the middle copy, freeze the lift
+  // transition so the swap between clones is a true, invisible jump
+  &.jumping .cat-card {
+    transition: none !important;
   }
 }
 

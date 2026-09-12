@@ -41,6 +41,10 @@ export class Home implements AfterViewInit {
   // raw index into loopedCategories (0..3*setSize - 1)
   activeIndex = signal(this.setSize);
 
+  // true only for the one frame where we silently re-center into the middle
+  // copy, so the lift/unlift CSS transition doesn't play during that jump
+  jumping = signal(false);
+
   @ViewChild('carousel') private carouselRef?: ElementRef<HTMLDivElement>;
   @ViewChildren('card') private cardRefs?: QueryList<ElementRef<HTMLElement>>;
 
@@ -110,7 +114,20 @@ export class Home implements AfterViewInit {
   private jumpTo(rawIndex: number, behavior: ScrollBehavior) {
     const el = this.cardRefs?.toArray()[rawIndex]?.nativeElement;
     if (!el) return;
+
+    if (behavior === 'instant') {
+      // freeze the lift transition so swapping which clone is "active"
+      // doesn't visibly drop/raise a card while we reposition
+      this.jumping.set(true);
+    }
+
     el.scrollIntoView({ inline: 'center', block: 'nearest', behavior });
     this.activeIndex.set(rawIndex);
+
+    if (behavior === 'instant') {
+      // let the jump paint with transitions off, then hand control back
+      // to CSS for the next user-driven swipe
+      requestAnimationFrame(() => requestAnimationFrame(() => this.jumping.set(false)));
+    }
   }
 }
