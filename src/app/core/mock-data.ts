@@ -136,7 +136,7 @@ export const RECIPES: Recipe[] = [
     categoryId: 'japanese',
     name: 'Sashimi Mix',
     shortDesc: 'Simple and tasty sushi dish without rice',
-    image: 'https://images.unsplash.com/photo-1584583570840-0a3d88497e46?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1563612116625-3012372fccce?w=800&q=80',
     difficulty: 'Low',
     time: '15 Min',
     doses: 'Two People',
